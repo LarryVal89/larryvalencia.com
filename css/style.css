@@ -1,6 +1,7 @@
 /* ── Tokens ── */
 :root {
-  --bg: #ebeae6;
+  --bg: #ffffff;
+  --surface: #f6f7f9;
   --white: #ffffff;
   --black: #111111;
   --charcoal: #2a2a2a;
@@ -10,12 +11,15 @@
   --purple: #8b7fd4;
   --yellow: #f4c542;
   --muted: rgba(17, 17, 17, 0.55);
+  --border: rgba(17, 17, 17, 0.08);
+  --shadow-sm: 0 2px 12px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 8px 32px rgba(17, 17, 17, 0.08);
   --font: 'Plus Jakarta Sans', system-ui, sans-serif;
   --radius: 28px;
   --radius-sm: 20px;
-  --gap: 1rem;
+  --gap: 1.125rem;
   --side-w: 52px;
-  --max: 1280px;
+  --max: 1200px;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -81,25 +85,33 @@ img { max-width: 100%; display: block; }
 .mobile-drawer { display: none; }
 
 .main {
-  padding: 1.25rem 1.25rem 1.25rem 0.5rem;
+  width: 100%;
   max-width: calc(var(--max) + var(--side-w));
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 1.5rem 0.75rem;
 }
 
 /* ── Bento ── */
-.bento-section { margin-bottom: 2rem; }
+.bento-section {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-top: none;
+}
 
 .bento-wrap {
   display: grid;
-  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
   gap: var(--gap);
   align-items: stretch;
-  min-height: min(85vh, 720px);
+  min-height: min(82vh, 680px);
+  max-width: var(--max);
 }
 
 .card {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .card-arrow {
@@ -143,10 +155,11 @@ img { max-width: 100%; display: block; }
 .about-notch {
   margin: -1.5rem -1.5rem 0;
   padding: 1rem 1.25rem;
-  background: var(--bg);
+  background: var(--white);
   border-radius: 0 0 var(--radius-sm) 0;
   width: fit-content;
   max-width: 85%;
+  box-shadow: 0 1px 0 var(--border);
 }
 
 .about-label {
@@ -251,7 +264,7 @@ img { max-width: 100%; display: block; }
 /* Bento right grid */
 .bento-right {
   display: grid;
-  grid-template-columns: 1fr minmax(110px, 150px);
+  grid-template-columns: 1fr minmax(130px, 168px);
   grid-template-rows: auto 1fr auto;
   gap: var(--gap);
   grid-template-areas:
@@ -259,6 +272,11 @@ img { max-width: 100%; display: block; }
     "featured stats"
     "clients awards";
   min-height: 100%;
+}
+
+.bento-right .card,
+.bento-right .card-stats {
+  box-shadow: var(--shadow-md);
 }
 
 .bento-head { grid-area: head; align-self: end; padding-bottom: 0.25rem; }
@@ -272,7 +290,7 @@ img { max-width: 100%; display: block; }
 
 .card-featured {
   grid-area: featured;
-  min-height: 200px;
+  min-height: 240px;
   background: var(--charcoal);
 }
 
@@ -403,8 +421,9 @@ img { max-width: 100%; display: block; }
 /* ── Sections below bento ── */
 .section {
   max-width: var(--max);
-  margin: 0 auto 2.5rem;
-  padding: 0 0.25rem;
+  margin: 0 auto 3rem;
+  padding: 2.5rem 0 0;
+  border-top: 1px solid var(--border);
 }
 
 .section-head { margin-bottom: 1.25rem; }
@@ -430,18 +449,21 @@ img { max-width: 100%; display: block; }
 }
 
 .work-card {
-  background: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: none;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .work-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: rgba(139, 147, 217, 0.35);
+  box-shadow: var(--shadow-sm);
 }
 
 .work-name { font-weight: 700; font-size: 1.05rem; }
@@ -455,8 +477,10 @@ img { max-width: 100%; display: block; }
 .marquee-wrap {
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--border);
   padding: 1.5rem 0;
+  box-shadow: none;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
@@ -478,8 +502,10 @@ img { max-width: 100%; display: block; }
 }
 
 .card-wide {
-  background: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--border);
   padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: none;
 }
 
 .card-wide h2 {
@@ -502,12 +528,17 @@ img { max-width: 100%; display: block; }
 }
 
 .card-blog {
-  background: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--border);
   padding: 1.5rem;
-  transition: transform var(--transition);
+  box-shadow: none;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.card-blog:hover { transform: translateY(-2px); }
+.card-blog:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
 
 .card-blog time {
   font-size: 0.8rem;
@@ -529,11 +560,17 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
+.section-contact {
+  border-top: none;
+  padding-top: 0;
+}
+
 .card-contact {
   background: var(--periwinkle);
   color: var(--white);
   text-align: center;
   padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-md);
 }
 
 .card-contact h2 {
@@ -589,9 +626,10 @@ img { max-width: 100%; display: block; }
   max-width: 360px;
   margin: 0 auto;
   background: var(--white);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 1.25rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-md);
   z-index: 200;
   transform: translateY(120%);
   opacity: 0;
@@ -640,11 +678,11 @@ img { max-width: 100%; display: block; }
     right: 1rem;
     z-index: 120;
     background: var(--white);
-    border: none;
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
   }
 
   .mobile-nav-toggle span {
@@ -671,7 +709,7 @@ img { max-width: 100%; display: block; }
     gap: 1.25rem;
     position: fixed;
     inset: 0;
-    background: rgba(235, 234, 230, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     z-index: 110;
     align-items: center;
     justify-content: center;
