@@ -8,9 +8,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+  <button class="mobile-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="mobile-drawer" aria-hidden="true">
+    <a href="#inicio">Studio</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#servicios">Expertise</a>
+    <a href="#blog">Blog</a>
+    <a href="#contacto">Contact</a>
+  </nav>
 
   <div class="shell">
     <aside class="side-nav" aria-label="Navegación principal">
@@ -20,18 +32,6 @@
       <a href="#blog" class="side-link"><span>Blog</span></a>
       <a href="#contacto" class="side-link"><span>Contact</span></a>
     </aside>
-
-    <button class="mobile-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="mobile-drawer" aria-hidden="true">
-      <a href="#inicio">Studio</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#servicios">Expertise</a>
-      <a href="#blog">Blog</a>
-      <a href="#contacto">Contact</a>
-    </nav>
 
     <main class="main">
       <!-- Bento hero -->
@@ -218,6 +218,6 @@
     <button class="btn btn-dark btn-sm" type="button" id="cookieAccept">Accept</button>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="./js/main.js" defer></script>
 </body>
 </html>
