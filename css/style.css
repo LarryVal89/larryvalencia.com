@@ -406,6 +406,43 @@ button { font-family: inherit; }
   padding-top: 28px;
   border-top: 1px solid var(--line);
 }
+.block-next {
+  margin-top: 18px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.folio {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-areas:
+    "brand ux shop"
+    "brand edit web"
+    "ads ads video";
+  gap: var(--gap);
+}
+.folio-item {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: var(--radius);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.15;
+  overflow: hidden;
+}
+.folio-item span { position: relative; z-index: 1; max-width: 12ch; }
+.folio-brand { grid-area: brand; min-height: 320px; background: var(--lavender); }
+.folio-ux { grid-area: ux; background: var(--lilac); }
+.folio-shop { grid-area: shop; background: var(--mint); color: #14332c; }
+.folio-edit { grid-area: edit; background: var(--charcoal); }
+.folio-web { grid-area: web; background: #111; }
+.folio-ads { grid-area: ads; min-height: 160px; background: var(--yellow); color: #111; }
+.folio-video { grid-area: video; background: #5c4db5; }
 .block-head { margin-bottom: 16px; }
 .eyebrow {
   margin: 0 0 4px;
@@ -538,6 +575,15 @@ button { font-family: inherit; }
   }
   .work-grid,
   .work-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .folio {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "brand brand"
+      "ux shop"
+      "edit web"
+      "ads video";
+  }
+  .folio-brand { min-height: 220px; }
 }
 
 /* Móvil: menú cerrado; al abrirse las opciones bajan en columna */
@@ -585,6 +631,19 @@ button { font-family: inherit; }
   .work-grid,
   .work-grid-2,
   .blog-grid { grid-template-columns: 1fr; }
+  .folio {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "ux"
+      "shop"
+      "edit"
+      "web"
+      "ads"
+      "video";
+  }
+  .folio-brand,
+  .folio-ads { min-height: 180px; }
 }
 
 @media (max-width: 480px) {
