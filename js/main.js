@@ -23,6 +23,33 @@
     if (window.innerWidth > 760) setOpen(false);
   });
 
+  const form = document.getElementById('lead-form');
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const data = new FormData(form);
+    const nombre = String(data.get('nombre') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const tipo = String(data.get('tipo') || '').trim();
+    const presupuesto = String(data.get('presupuesto') || '').trim();
+    const body = [
+      `Nombre: ${nombre}`,
+      `Email: ${email}`,
+      `Tipo de proyecto: ${tipo}`,
+      `Presupuesto estimado: ${presupuesto}`
+    ].join('\n');
+    const subject = `Llamada estratégica — ${nombre}`;
+    window.location.href = `mailto:valencialarry1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (status) {
+      status.textContent = 'Se abrió tu correo para enviar la solicitud. Si no se abrió, escribe a valencialarry1@gmail.com.';
+    }
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const href = anchor.getAttribute('href');
